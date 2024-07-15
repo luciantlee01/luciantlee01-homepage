@@ -15,32 +15,26 @@ import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import { GridItem } from '../components/grid-item'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
-import thumbYouTube from '../public/images/links/youtube.png'
-import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
+import { IoLogoGoogle, IoLogoInstagram, IoLogoGithub, IoLogoLinkedin, IoLogoGitlab } from 'react-icons/io5'
 import Image from 'next/image'
 
 const Home = () => (
   <Layout>
     <Container>
-      <Box
-        borderRadius="lg"
-        mb={6}
-        p={3}
-        textAlign="center"
-        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
-        css={{ backdropFilter: 'blur(10px)' }}
-      >
-        Hello, I&apos;m an indie app developer based in Japan!
-      </Box>
 
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>
           <Heading as="h2" variant="page-title">
-            Takuya Matsuyama
+            Lu·cian Lee
           </Heading>
-          <p>Digital Craftsman ( Artist / Developer / Designer )</p>
+          <p> /luː.sɪən/ </p>
+          <p> noun </p>
+          <p> 
+                &nbsp; Software Engineer, Web Developer, and Aspiring DJ
+          </p>
+          <p> 
+                &nbsp;
+          </p>
         </Box>
         <Box
           flexShrink={0}
@@ -59,7 +53,7 @@ const Home = () => (
             overflow="hidden"
           >
             <Image
-              src="/images/takuya.jpg"
+              src="/images/IMG_2024.png"
               alt="Profile image"
               width="100"
               height="100"
@@ -68,31 +62,21 @@ const Home = () => (
         </Box>
       </Box>
 
+
       <Section delay={0.1}>
         <Heading as="h3" variant="section-title">
           Work
         </Heading>
         <Paragraph>
-          Takuya is a freelance and a full-stack developer based in Osaka with a
-          passion for building digital services/stuff he wants. He has a knack
-          for all things launching products, from planning and designing all the
-          way to solving real-life problems with code. When not online, he loves
-          hanging out with his camera. Currently, he is living off of his own
-          product called{' '}
-          <Link as={NextLink} href="/works/inkdrop" passHref scroll={false}>
-            Inkdrop
+          I am a Computer Science student and a front-end developer based in California 
+          with a passion for software development. I seek challenging opportunities in 
+          solving real-life problems with code. Currently, I am a recent B.S Computer Science
+          graduate at the University of California, Santa Cruz and  am also working at Kaizen 
+          Electronic Health Records System as a front-end developer.{' '}
+          <Link as={NextLink} href="/works/kaizenEHR" passHref scroll={false}>
+            Kaizen EHR
           </Link>
-          . He publishes content for marketing his products and his YouTube
-          channel called &quot;
-          <Link
-            as={NextLink}
-            href="https://www.youtube.com/devaslife"
-            passHref
-            target="_blank"
-          >
-            Dev as Life
-          </Link>
-          &quot; has more than 100k subscribers.
+          . When not online, I love hanging out with my DJ controller board, creating new music.
         </Paragraph>
         <Box align="center" my={4}>
           <Button
@@ -112,22 +96,18 @@ const Home = () => (
           Bio
         </Heading>
         <BioSection>
-          <BioYear>1984</BioYear>
-          Born in Osaka (大阪), Japan.
+          <BioYear>2002</BioYear>
+          Born in Kaohsiung (高雄), Taiwan.
         </BioSection>
         <BioSection>
-          <BioYear>2010</BioYear>
-          Completed the Master&apos;s Program in the Graduate School of
-          Information Science at Nara Institute of Science and Technology
-          (奈良先端科学技術大学院大学情報科学研究科修士課程)
+          <BioYear>2023 - present</BioYear>
+          Working at Kaizen EHR in San Francisco, California.
         </BioSection>
         <BioSection>
-          <BioYear>2010</BioYear>
-          Worked at Yahoo! Japan (ヤフー株式会社入社)
-        </BioSection>
-        <BioSection>
-          <BioYear>2012 to present</BioYear>
-          Working as a freelancer
+          <BioYear>2024</BioYear>
+          Completed the Bachelor of Science Program for Computer Science
+          in the Baskin School of Engineering at the University of California, 
+          Santa Cruz
         </BioSection>
       </Section>
 
@@ -136,105 +116,84 @@ const Home = () => (
           I ♥
         </Heading>
         <Paragraph>
-          Art, Music,{' '}
-          <Link href="https://illust.odoruinu.net/" target="_blank">
-            Drawing
+          {' '}
+          <Link href="https://drive.google.com/drive/folders/1-qbHA955UJbWOrYTNpN0VrrFunYk06Nb?usp=drive_link" target="_blank">
+            Music
           </Link>
-          , Playing Drums,{' '}
-          <Link href="https://500px.com/p/craftzdog" target="_blank">
+          , Volleyball, Playing Guitar,{' '}
+          <Link href="" target="_blank">
             Photography
           </Link>
-          , Leica, Machine Learning
+          , Machine Learning, Archery, and Golf
         </Paragraph>
       </Section>
 
       <Section delay={0.3}>
         <Heading as="h3" variant="section-title">
-          On the web
+          Socials
         </Heading>
         <List>
           <ListItem>
-            <Link href="https://github.com/craftzdog" target="_blank">
+            <Link href="https://github.com/luciantlee01" target="_blank">
               <Button
                 variant="ghost"
-                colorScheme="teal"
+                colorScheme="purple"
                 leftIcon={<IoLogoGithub />}
               >
-                @craftzdog
+                @luciantlee01
               </Button>
             </Link>
           </ListItem>
+
           <ListItem>
-            <Link href="https://twitter.com/inkdrop_app" target="_blank">
+            <Link href="https://www.linkedin.com/in/lucianlee01/" target="_blank">
               <Button
                 variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoTwitter />}
+                colorScheme="purple"
+                leftIcon={<IoLogoLinkedin />}
               >
-                @inkdrop_app (English)
+                @lucianlee01
               </Button>
             </Link>
           </ListItem>
+
           <ListItem>
-            <Link href="https://twitter.com/craftzdog" target="_blank">
+            <Link href="https://instagram.com/lucianlee_" target="_blank">
               <Button
                 variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoTwitter />}
-              >
-                @craftzdog (日本語)
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://instagram.com/craftzdog" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
+                colorScheme="purple"
                 leftIcon={<IoLogoInstagram />}
               >
-                @craftzdog
+                @lucianlee_
               </Button>
             </Link>
           </ListItem>
+
+          <ListItem>
+            <Link href="mailto:luciantlee01@gmail.com" target="_blank">
+              <Button
+                variant="ghost"
+                colorScheme="purple"
+                leftIcon={<IoLogoGoogle />}
+              >
+                @luciantlee01
+              </Button>
+            </Link>
+          </ListItem>
+          
+          <ListItem>
+            <Link href="https://git.ucsc.edu/lutlee/" target="_blank">
+              <Button
+                variant="ghost"
+                colorScheme="purple"
+                leftIcon={<IoLogoGitlab />}
+              >
+                @lutlee
+              </Button>
+            </Link>
+          </ListItem>
+
         </List>
-
-        <SimpleGrid columns={[1, 2, 2]} gap={6}>
-          <GridItem
-            href="https://www.youtube.com/devaslife"
-            title="Dev as Life"
-            thumbnail={thumbYouTube}
-          >
-            My YouTube channel (&gt;150k subs)
-          </GridItem>
-          <GridItem
-            href="https://www.inkdrop.app/"
-            title="Inkdrop"
-            thumbnail={thumbInkdrop}
-          >
-            A Markdown note-taking app
-          </GridItem>
-        </SimpleGrid>
-
-        <Heading as="h3" variant="section-title">
-          Newsletter
-        </Heading>
-        <p>
-          Join me on a behind-the-scenes coding journey. Weekly updates on
-          projects, tutorials, and videos
-        </p>
-
-        <Box align="center" my={4}>
-          <Button
-            as={NextLink}
-            href="https://www.devas.life/"
-            scroll={false}
-            leftIcon={<EmailIcon />}
-            colorScheme="teal"
-          >
-            Sign up my newsletter here
-          </Button>
-        </Box>
       </Section>
     </Container>
   </Layout>

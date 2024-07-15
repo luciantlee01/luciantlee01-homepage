@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Text, useColorModeValue } from '@chakra-ui/react'
-import FootprintIcon from './icons/footprint'
 import styled from '@emotion/styled'
+import FingerPrintIcon from './icons/fingerprint'
 
 const LogoBox = styled.span`
   font-weight: bold;
@@ -26,14 +26,14 @@ const Logo = () => {
     (<Link href="/" scroll={false}>
 
       <LogoBox>
-        <FootprintIcon />
+        <FingerPrintIcon />
         <Text
           color={useColorModeValue('gray.800', 'whiteAlpha.900')}
           fontFamily='M PLUS Rounded 1c", sans-serif'
           fontWeight="bold"
           ml={3}
         >
-          Takuya Matsuyama
+          Lucian Lee
         </Text>
       </LogoBox>
 

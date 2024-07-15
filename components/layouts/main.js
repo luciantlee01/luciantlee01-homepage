@@ -3,33 +3,32 @@ import dynamic from 'next/dynamic'
 import NavBar from '../navbar'
 import { Box, Container } from '@chakra-ui/react'
 import Footer from '../footer'
-import VoxelDogLoader from '../voxel-dog-loader'
+import VoxelDogLoader from '../programmer-loader'
+import Cursor from './cursor'; // Adjust the path as necessary
+import { useContext } from 'react'
+import { ThemeContext } from '@emotion/react'
 
-const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
+
+
+const LazyVoxelDog = dynamic(() => import('../programmer'), {
   ssr: false,
   loading: () => <VoxelDogLoader />
 })
 
 const Main = ({ children, router }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <Box as="main" pb={8}>
+      <Cursor theme={theme}/>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Takuya's homepage" />
-        <meta name="author" content="Takuya Matsuyama" />
-        <meta name="author" content="craftzdog" />
-        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <meta name="twitter:title" content="Takuya Matsuyama" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@craftzdog" />
-        <meta name="twitter:creator" content="@craftzdog" />
-        <meta name="twitter:image" content="https://www.craftz.dog/card.png" />
-        <meta property="og:site_name" content="Takuya Matsuyama" />
-        <meta name="og:title" content="Takuya Matsuyama" />
+        <meta name="description" content="Lucian's homepage" />
+        <meta name="author" content="Lucian Lee" />
+        <meta name="author" content="luciantlee01" />
+        <meta property="og:site_name" content="Lucian Lee" />
+        <meta name="og:title" content="Lucian Lee" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.craftz.dog/card.png" />
-        <title>Takuya Matsuyama - Homepage</title>
+        <title>Lucian Lee - Homepage</title>
       </Head>
 
       <NavBar path={router.asPath} />
@@ -41,8 +40,15 @@ const Main = ({ children, router }) => {
 
         <Footer />
       </Container>
+
+
     </Box>
+
+
+
   )
 }
+
+
 
 export default Main
