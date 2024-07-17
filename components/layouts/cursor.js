@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useColorMode } from '@chakra-ui/react';
 
-const Cursor = ({theme}) => {
+const Cursor = () => {
+  const { colorMode } = useColorMode();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [trailPosition, setTrailPosition] = useState({ x: 0, y: 0 });
   const [hoverState, setHoverState] = useState(false);
 
   useEffect(() => {
-    let trailFrame = null;
-
     const handleMouseMove = (e) => {
-      // Immediate cursor position update
       setPosition({ x: e.clientX, y: e.clientY });
-
-      // Throttled update for the trailing cursor
-      cancelAnimationFrame(trailFrame);
-      trailFrame = requestAnimationFrame(() => {
-        setTrailPosition({ x: e.clientX, y: e.clientY });
-      });
     };
 
     const handleLinkHover = (hover) => {
@@ -27,40 +20,77 @@ const Cursor = ({theme}) => {
       });
     };
 
-    // Apply hover state changes
     handleLinkHover(true);
     handleLinkHover(false);
 
     window.addEventListener('mousemove', handleMouseMove);
 
+    const updateTrailPosition = () => {
+      setTrailPosition((prevTrailPosition) => {
+        const dx = position.x - prevTrailPosition.x;
+        const dy = position.y - prevTrailPosition.y;
+        const newTrailPosition = {
+          x: prevTrailPosition.x + dx * 0.1,
+          y: prevTrailPosition.y + dy * 0.1
+        };
+        return newTrailPosition;
+      });
+      requestAnimationFrame(updateTrailPosition);
+    };
+
+    updateTrailPosition();
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(trailFrame);
     };
-  }, []);
+  }, [position]);
 
-  const cursorStyle = theme === 'light' ? { borderColor: '#000', backgroundColor: '#000' } : { borderColor: '#fff', backgroundColor: '#fff' };
+  const darkCursor = (
+    <svg width="40" height="40" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" stroke="white" strokeWidth="2" fill="none" />
+    </svg>
+  );
 
+  const lightCursor = (
+    <svg width="40" height="40" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="none" />
+    </svg>
+  );
+
+  const darkInnerCursor = (
+    <svg width="20" height="20" viewBox="0 0 20 20">
+      <circle cx="10" cy="10" r="8" fill="white" />
+    </svg>
+  );
+
+  const lightInnerCursor = (
+    <svg width="20" height="20" viewBox="0 0 20 20">
+      <circle cx="10" cy="10" r="8" fill="black" />
+    </svg>
+  );
 
   return (
     <>
       <div
         className={`cursor outer ${hoverState ? 'hover' : ''}`}
-        style={{ 
-          ...cursorStyle,
-          left: `${position.x}px`, 
-          top: `${position.y}px` 
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          zIndex: 9999, // Ensure the custom cursor is on top
         }}
-      ></div>
+      >
+        {colorMode === 'dark' ? darkCursor : lightCursor}
+      </div>
       <div
         className={`cursor inner ${hoverState ? 'hover' : ''}`}
         style={{
-          ...cursorStyle,
           left: `${trailPosition.x}px`,
           top: `${trailPosition.y}px`,
-          transition: 'left .5s ease-out, top .5s ease-out', // Transition for the trailing effect
+          zIndex: 9999, // Ensure the custom cursor is on top
         }}
-      ></div>
+      >
+        {colorMode === 'dark' ? darkInnerCursor : lightInnerCursor}
+      </div>
     </>
   );
 };

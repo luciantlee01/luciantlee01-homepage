@@ -84,7 +84,7 @@ const Home = () => (
             href="/works"
             scroll={false}
             rightIcon={<ChevronRightIcon />}
-            colorScheme="teal"
+            colorScheme="purple"
           >
             My portfolio
           </Button>
@@ -192,7 +192,6 @@ const Home = () => (
               </Button>
             </Link>
           </ListItem>
-
         </List>
       </Section>
     </Container>

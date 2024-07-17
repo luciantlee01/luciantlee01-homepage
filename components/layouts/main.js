@@ -4,11 +4,9 @@ import NavBar from '../navbar'
 import { Box, Container } from '@chakra-ui/react'
 import Footer from '../footer'
 import VoxelDogLoader from '../programmer-loader'
-import Cursor from './cursor'; // Adjust the path as necessary
+import Cursor from './cursor'
 import { useContext } from 'react'
 import { ThemeContext } from '@emotion/react'
-
-
 
 const LazyVoxelDog = dynamic(() => import('../programmer'), {
   ssr: false,
@@ -16,10 +14,11 @@ const LazyVoxelDog = dynamic(() => import('../programmer'), {
 })
 
 const Main = ({ children, router }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext)
+  
   return (
     <Box as="main" pb={8}>
-      <Cursor theme={theme}/>
+      <Cursor theme={theme} />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Lucian's homepage" />
@@ -40,15 +39,13 @@ const Main = ({ children, router }) => {
 
         <Footer />
       </Container>
-
-
+      <style jsx global>{`
+        body {
+          cursor: none;
+        }
+      `}</style>
     </Box>
-
-
-
   )
 }
-
-
 
 export default Main
